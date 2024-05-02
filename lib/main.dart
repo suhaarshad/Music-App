@@ -12,75 +12,35 @@ class MusicApp extends StatelessWidget {
     final sound = AudioPlayer();
     sound.play(AssetSource('note$soundNum.wav'));
   }
-
+   Expanded buttons({required Color color,required int soundNum}){
+     return Expanded(
+       child: MaterialButton(
+         color: color,
+         onPressed: (){
+           playSound(soundNum);
+         },
+         // color: Colors.blue,
+       ),
+     );
+    
+  }
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: SafeArea(
-          child: Column(
-            crossAxisAlignment:CrossAxisAlignment.stretch ,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              MaterialButton(
-                onPressed: (){
-                  playSound(1);
-                },
-                color: Colors.blue,
-                child: Text('click me') ,
-              ),
-
-              MaterialButton(
-                onPressed: (){
-                  playSound(2);
-                },
-                color: Colors.red,
-                child: Text('click me') ,
-              ),
-
-              MaterialButton(
-                onPressed: (){
-                  playSound(3);
-                },
-                color: Colors.orange,
-                child: Text('click me') ,
-              ),
-
-              MaterialButton(
-                onPressed: (){
-                  playSound(4);
-                },
-                color: Colors.pink[300],
-                child: Text('click me') ,
-              ),
-
-              MaterialButton(
-                onPressed: (){
-                  playSound(5);
-                },
-                color: Colors.purple,
-                child: Text('click me') ,
-              ),
-
-              MaterialButton(
-                onPressed: (){
-                  playSound(6);
-                },
-                color: Colors.yellow,
-                child: Text('click me') ,
-              ),
-
-              MaterialButton(
-                onPressed: (){
-                  playSound(7);
-                },
-                color: Colors.green,
-                child: Text('click me') ,
-              ),
-            ],
-          ),
+        // backgroundColor: Colors.black,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            buttons(color:Colors.red,soundNum:1),
+            buttons(color:Colors.yellow,soundNum:2),
+            buttons(color:Colors.orange,soundNum:3),
+            buttons(color:Colors.pink,soundNum:4),
+            buttons(color:Colors.purple,soundNum:5),
+            buttons(color:Colors.blue,soundNum:6),
+            buttons(color:Colors.green,soundNum:7),
+          ],
         ),
       ),
     );
